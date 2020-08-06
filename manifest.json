@@ -1,0 +1,18 @@
+{
+    "manifest_version": 2,
+    "name": "Nhentai downloader",
+    "description": "Download doujinshi quickly",
+    "version": "1.0.0",
+    "browser_action":
+    {
+        "default_popup": "popup.html"
+    },
+    "permissions":
+    [
+        "downloads",
+        "tabs",
+        "https://nhentai.net/*",
+        "https://i.nhentai.net/*",
+        "storage"
+    ]
+}
