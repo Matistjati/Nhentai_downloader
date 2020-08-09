@@ -98,9 +98,9 @@ async function DownloadDoujinshi()
                                         imageDownloadTime = Date.now()
                                         var zip = new JSZip();
                                         console.log("starting compression")
-                                        for (i=1;i<data.length;i++)
+                                        for (i=0;i<data.length;i++)
                                         {
-                                            zip.file(i+".jpg", data[i]);
+                                            zip.file((i+1)+".jpg", data[i]);
                                         }
                                         
                                         zip.generateAsync({type:"blob", compression:"STORE"}).then(function(content) {
