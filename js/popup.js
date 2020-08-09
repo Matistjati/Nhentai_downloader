@@ -46,6 +46,23 @@ function createWorker(i) {
     });
 }
 
+function getImageType(extension)
+{
+    if (extension == "j")
+    {
+        return "jpg"
+    }
+    else if (extension == "p")
+    {
+        return "png"
+    }
+    else
+    {
+        console.log("Unknown image type: " + extension)
+        return "jpg"
+    }
+}
+
 async function DownloadDoujinshi()
 {  
 
@@ -85,9 +102,11 @@ async function DownloadDoujinshi()
                             {
                                 var start = Date.now();
                                 var promises = [];
-                                console.log("https://i.nhentai.net/galleries/" + json["media_id"]+ "/"+i+".jpg")
+                                console.log(json["images"])
+                                console.log(json["images"]["pages"])
+                                console.log("https://i.nhentai.net/galleries/" + json["media_id"]+ "/"+i+"."+getImageType(json["images"]["pages"][i-1]))
                                 for(var i = 1; i < json["num_pages"]+1; i++) {
-                                    promises.push(createWorker("https://i.nhentai.net/galleries/" + json["media_id"]+ "/"+i+".jpg"));
+                                    promises.push(createWorker("https://i.nhentai.net/galleries/" + json["media_id"]+ "/"+i+"."+getImageType(json["images"]["pages"][i-1]["t"])));
                                     //console.log(i)
                                 }
                                 
